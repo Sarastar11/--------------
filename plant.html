@@ -39,8 +39,8 @@ font-size: 24px;
     <div id="plant"></div>
     <div id="status">الحالة: لم يتم تشخيص النبات بعد</div>
     <input type="file" id="imageInput" accept="image/*" style="display:block; margin: 20px auto;" />
-    <button id="simulate">تشخيص الحالة</button>
-
+    <button id="simulate">تشخيص الحالة</button><br>
+<a href="./index.html">عودة</a>
     <script>
         const plant = document.getElementById('plant');
         const imageInput = document.getElementById('imageInput');
@@ -62,28 +62,22 @@ font-size: 24px;
             }
         });
 
-        // تشخيص حالة النبات بناءً على اسم الملف
+        // تشخيص حالة النبات عشوائيًا
         simulateButton.addEventListener('click', () => {
             if (!uploadedImage) {
                 alert('يرجى رفع صورة لتشخيص الحالة!');
                 return;
             }
 
-            const fileName = imageInput.files[0].name.toLowerCase();
-
-            if (fileName.includes('healthy')) {
-                statusDisplay.textContent = 'الحالة: النبات سليم 🟢';
-                statusDisplay.style.color = 'green';
-            } else if (fileName.includes('آفة زراعية')) {
+            // تحديد حالة عشوائية
+            const randomValue = Math.random();
+            if (randomValue < 0.66) {
                 statusDisplay.textContent = '⚠️ الحالة: النبات يعاني من إصابة طفيفة ⚠️';
                 statusDisplay.style.color = 'orange';
-            } else if (fileName.includes('حشرة المن')) {
+            } else {
                 statusDisplay.textContent = '🚨 تحذير: النبات مصاب بمرض خطير 🚨';
                 statusDisplay.style.color = 'red';
                 alert('⚠️ تحذير: النبات يحتاج إلى معالجة فورية!');
-            } else {
-                statusDisplay.textContent = 'الحالة: غير معروفة ⚠️';
-                statusDisplay.style.color = 'gray';
             }
         });
     </script>
