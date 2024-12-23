@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تشخيص حالة النبات</title>
+    <style>
+        body{
+            text-align: center;
+            background-image: url(./images/2.jpeg);
+        }
+        #plant {
+            width: 200px;
+            height: 200px;
+            background-size: cover;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+        }
+        #status {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        button, input {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+
+        }
+        button{
+            background-color: white;
+font-weight: 600;
+font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <h1>رفع صورة للنبات المصاب</h1>
+    <div id="plant"></div>
+    <div id="status">الحالة: لم يتم تشخيص النبات بعد</div>
+    <input type="file" id="imageInput" accept="image/*" style="display:block; margin: 20px auto;" />
+    <button id="simulate">تشخيص الحالة</button>
+
+    <script>
+        const plant = document.getElementById('plant');
+        const imageInput = document.getElementById('imageInput');
+        const simulateButton = document.getElementById('simulate');
+        const statusDisplay = document.getElementById('status');
+
+        let uploadedImage = null;
+
+        // التعامل مع رفع الصورة
+        imageInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    uploadedImage = e.target.result; // حفظ الصورة
+                    plant.style.backgroundImage = `url(${uploadedImage})`; // عرض الصورة
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // تشخيص حالة النبات بناءً على اسم الملف
+        simulateButton.addEventListener('click', () => {
+            if (!uploadedImage) {
+                alert('يرجى رفع صورة لتشخيص الحالة!');
+                return;
+            }
+
+            const fileName = imageInput.files[0].name.toLowerCase();
+
+            if (fileName.includes('healthy')) {
+                statusDisplay.textContent = 'الحالة: النبات سليم 🟢';
+                statusDisplay.style.color = 'green';
+            } else if (fileName.includes('آفة زراعية')) {
+                statusDisplay.textContent = '⚠️ الحالة: النبات يعاني من إصابة طفيفة ⚠️';
+                statusDisplay.style.color = 'orange';
+            } else if (fileName.includes('حشرة المن')) {
+                statusDisplay.textContent = '🚨 تحذير: النبات مصاب بمرض خطير 🚨';
+                statusDisplay.style.color = 'red';
+                alert('⚠️ تحذير: النبات يحتاج إلى معالجة فورية!');
+            } else {
+                statusDisplay.textContent = 'الحالة: غير معروفة ⚠️';
+                statusDisplay.style.color = 'gray';
+            }
+        });
+    </script>
+</body>
+</html>
