@@ -27,6 +27,7 @@ function displayResult(insectType) {
     if (insectType === "حشرة المن" && insectType !== lastInsectType) {
         alertSound.currentTime = 0; // إعادة الصوت إلى بدايته
         alertSound.play(); // تشغيل الصوت
+        alert("تم اكتشاف حشرة المن!");
     }
 
     // تحديث الحشرة الأخيرة

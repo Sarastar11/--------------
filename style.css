@@ -2,11 +2,13 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     /* margin-top: 20px; */
-    background-image: url(./images/2.JPG);
+    background-image: url(./images/bg.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
     height: 1000px;
-  
+}
+h1{
+    font-size: 40px;
 }
 #result {
     margin-top: 20px;
@@ -17,11 +19,21 @@ img {
 }
 button {
     margin-top: 20px;
-    width: 150px;
-    height: 43px;
-    font-size: larger;
+    width: 250px;
+    height:93px;
+    font-size:32px;
     font-weight: 600;
+    border-radius: 28px;
+    color: red;
+    border-width: 5px;
+}
+a{
+    font-size: 24px;
+    color: black;
+    background-color: aliceblue;
+    padding: 8px;
     border-radius: 8px;
+margin-top: 50px;
 }
 canvas {
     margin-top: 20px;
@@ -32,4 +44,5 @@ canvas {
     font-size: 20px;
     font-weight: bold;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
