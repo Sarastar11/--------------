@@ -98,3 +98,24 @@ function stopListening() {
     }
     console.log("تم إيقاف الاستماع.");
 }
+// Function to request microphone permission
+async function requestMicrophonePermission() {
+    try {
+      // Request access to the microphone
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      
+      // Permission granted
+      console.log("Microphone permission granted!");
+      
+      // Optional: Stop the stream if you don’t need it immediately
+      stream.getTracks().forEach(track => track.stop());
+    } catch (err) {
+      // Permission denied or error
+      console.error("Microphone permission denied or error:", err.message);
+      alert("Microphone access is required to use this feature.");
+    }
+  }
+  
+  // Trigger the function
+  requestMicrophonePermission();
+  
