@@ -1,47 +1,63 @@
 <!DOCTYPE html>
 <html lang="ar">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تشخيص حالة النبات</title>
     <style>
-        body{
+        body {
             text-align: center;
-            background-image: url(./images/2.JPG);
-            
+            background-image: url(./images/bg2.jpeg);
+
         }
+
         #plant {
             width: 200px;
             height: 200px;
             background-size: cover;
             margin: 20px auto;
-            border: 1px solid #ccc;
+            border: 3px solid #ccc;
         }
+
         #status {
             font-size: 18px;
             font-weight: bold;
-            margin-top: 10px;
+            margin: 10px auto;
+            background-color: #fbf7f7;
+            width: fit-content;
+            padding: 4px;
+            border-radius: 4px;
         }
-        button, input {
+
+        button,
+        input {
             padding: 10px 20px;
             font-size: 16px;
             margin-top: 10px;
-
+            border-radius: 14px;
         }
-        button{
+
+        #imageInput {
+            border: 2px solid #ccc;
+            background-color: #f6f2f2;
+        }
+
+        button {
             background-color: white;
-font-weight: 600;
-font-size: 24px;
+            font-weight: 600;
+            font-size: 24px;
         }
     </style>
 </head>
+
 <body>
     <h1>رفع صورة للنبات المصاب</h1>
     <div id="plant"></div>
     <div id="status">الحالة: لم يتم تشخيص النبات بعد</div>
     <input type="file" id="imageInput" accept="image/*" style="display:block; margin: 20px auto;" />
     <button id="simulate">تشخيص الحالة</button><br>
-<a href="./index.html">عودة</a>
+    <a href="./index.html">عودة</a>
     <script>
         const plant = document.getElementById('plant');
         const imageInput = document.getElementById('imageInput');
@@ -55,7 +71,7 @@ font-size: 24px;
             const file = event.target.files[0];
             if (file) {
                 const reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     uploadedImage = e.target.result; // حفظ الصورة
                     plant.style.backgroundImage = `url(${uploadedImage})`; // عرض الصورة
                 };
@@ -83,4 +99,5 @@ font-size: 24px;
         });
     </script>
 </body>
+
 </html>
